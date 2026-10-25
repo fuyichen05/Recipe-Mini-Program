@@ -20,15 +20,21 @@
     "list": [
       {
         "pagePath": "pages/all/all",
-        "text": "全部"
+        "text": "全部",
+        "iconPath": "images/icons/tab-all.png",
+        "selectedIconPath": "images/icons/tab-all-active.png"
       },
       {
         "pagePath": "pages/category/category",
-        "text": "分类"
+        "text": "分类",
+        "iconPath": "images/icons/tab-cat.png",
+        "selectedIconPath": "images/icons/tab-cat-active.png"
       },
       {
         "pagePath": "pages/add/add",
-        "text": "添加"
+        "text": "添加",
+        "iconPath": "images/icons/tab-add.png",
+        "selectedIconPath": "images/icons/tab-add-active.png"
       }
     ]
   },

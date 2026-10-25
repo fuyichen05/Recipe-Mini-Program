@@ -13,11 +13,11 @@
     <view class="head-row">
       <view class="name">{{recipe.name}}</view>
       <view
-        class="fav-btn {{recipe.isFavorite ? 'on' : ''}}"
+        class="fav-toggle {{recipe.isFavorite ? 'on' : ''}}"
         bind:tap="onToggleFav"
       >
-        <text class="fav-star">★</text>
-        <text class="fav-text">{{recipe.isFavorite ? '已收藏' : '收藏'}}</text>
+        <text class="fav-toggle-star">★</text>
+        <text>{{recipe.isFavorite ? '已收藏' : '收藏'}}</text>
       </view>
     </view>
     <view class="head-meta">
@@ -40,8 +40,12 @@
 
   <!-- 底部操作 -->
   <view class="footer">
-    <button class="btn-ghost edit-btn" bind:tap="onEdit">编辑</button>
-    <button class="btn-danger" bind:tap="onDelete">删除</button>
+    <button class="btn-ghost edit-btn" bind:tap="onEdit">
+      <image class="btn-icon" src="/images/icons/edit.png" />编辑
+    </button>
+    <button class="btn-danger" bind:tap="onDelete">
+      <image class="btn-icon" src="/images/icons/trash.png" />删除
+    </button>
   </view>
 </view>
 

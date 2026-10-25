@@ -22,8 +22,9 @@
         value="{{categoryIndex < 0 ? 0 : categoryIndex}}"
         bindchange="onCategoryChange"
       >
-        <view class="picker {{categoryIndex >= 0 ? '' : 'placeholder'}}">
-          {{categoryIndex >= 0 ? categories[categoryIndex] : '请选择分类'}}
+        <view class="picker-row {{categoryIndex >= 0 ? '' : 'placeholder'}}">
+          <text>{{categoryIndex >= 0 ? categories[categoryIndex] : '请选择分类'}}</text>
+          <view class="picker-arrow"></view>
         </view>
       </picker>
     </view>
@@ -37,7 +38,9 @@
         bind:tap="previewCover"
       >
         <image class="cover-img" src="{{coverTempPath || coverFileID}}" mode="aspectFill" />
-        <view class="cover-change" catch:tap="chooseCover">更换封面</view>
+        <view class="cover-change" catch:tap="chooseCover">
+          <image class="cover-change-icon" src="/images/icons/camera-white.png" />更换封面
+        </view>
       </view>
       <view class="cover-empty" wx:else bind:tap="chooseCover">
         <text class="cover-plus">＋</text>
@@ -50,7 +53,7 @@
       <view class="label">配方 <text class="required">*</text></view>
       <textarea
         class="textarea"
-        placeholder="记录比例和用量，例如：&#10;生抽:老抽:糖 = 2:1:1&#10;五花肉 500g、冰糖 30g"
+        placeholder="记录比例和用量，例如：生抽:老抽:糖 = 2:1:1或者五花肉 500g、冰糖 30g"
         value="{{recipeContent}}"
         bindinput="onContentInput"
         maxlength="1000"
@@ -81,14 +84,14 @@
   <!-- 底部操作 -->
   <view class="footer">
     <button wx:if="{{isEdit}}" class="btn-ghost cancel-btn" catch:tap="cancelEdit">
-      取消编辑
+      <image class="btn-icon" src="/images/icons/x-gray.png" />取消编辑
     </button>
     <button
       class="btn-primary save-btn {{submitting ? 'disabled' : ''}}"
       bind:tap="onSave"
       disabled="{{submitting}}"
     >
-      {{isEdit ? '保存修改' : '保存'}}
+      <image class="btn-icon" src="/images/icons/check-white.png" />{{isEdit ? '保存修改' : '保存'}}
     </button>
   </view>
 </view>

@@ -5,9 +5,9 @@
 
 .card {
   background: #fff;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   overflow: hidden;
-  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8rpx 24rpx rgba(31, 31, 31, 0.06);
 }
 
 .cover-wrap {

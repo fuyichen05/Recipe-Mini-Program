@@ -12,7 +12,7 @@
 | 功能 | 说明 |
 | --- | --- |
 | 菜品记录 | 菜名（必填）、封面图（必填，拍照/相册）、配方自由文本（必填）、备注（可选） |
-| 分类 | 预设五类：早餐 / 正餐 / 甜点 / 汤 / 其他，添加时必选 |
+| 分类 | 预设四类：早餐 / 正餐 / 甜点 / 其他，添加时必选 |
 | 收藏 | 列表卡片星标、详情页均可一键收藏/取消 |
 | 列表排序 | 收藏的在前，其余按菜名拼音/字母升序（客户端排序） |
 | 编辑/删除 | 详情页操作，**所有家庭成员对任何菜品都有编辑删除权限** |
@@ -30,8 +30,12 @@ Recipe-Mini-Program/
 ├── utils/
 │   ├── recipe.js              # recipes 集合数据层（增删改查/收藏/排序）
 │   └── image.js               # 图片选择/压缩(≤1200px)/上传云存储/删除
+├── images/
+│   └── icons/                 # TabBar / 按钮 PNG 图标（由 tools/gen-icons.js 生成）
 ├── components/
 │   └── recipe-card/           # 菜品卡片组件（全部页/分类页共用）
+├── tools/
+│   └── gen-icons.js           # 图标生成脚本（node tools/gen-icons.js 可重新生成）
 └── pages/
     ├── all/                   # Tab1 全部菜品（空状态提示、下拉刷新）
     ├── category/              # Tab2 分类（左侧分类栏 + 右侧菜品）
@@ -87,7 +91,7 @@ const CLOUD_ENV_ID = 'cloud1-3g1axxxxxxxx' // ← 换成你的环境 ID
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | name | string | 菜名（必填） |
-| category | string | 分类：早餐/正餐/甜点/汤/其他（必填） |
+| category | string | 分类：早餐/正餐/甜点/其他（必填） |
 | coverImageFileID | string | 云存储文件 ID（必填） |
 | recipeContent | string | 配方自由文本（必填） |
 | note | string | 备注/心得（可选） |

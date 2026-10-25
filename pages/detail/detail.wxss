@@ -31,25 +31,29 @@
   font-weight: 700;
   color: #222222;
 }
-.fav-btn {
+.fav-toggle {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 4rpx 16rpx;
+  padding: 12rpx 26rpx;
+  border-radius: 999rpx;
+  border: 2rpx solid #e5e5e5;
+  color: #999999;
+  font-size: 26rpx;
   flex-shrink: 0;
+  margin-left: 20rpx;
 }
-.fav-star {
-  font-size: 44rpx;
+.fav-toggle-star {
+  font-size: 30rpx;
   color: #d8d8d8;
+  margin-right: 10rpx;
   line-height: 1;
 }
-.fav-text {
-  font-size: 22rpx;
-  color: #999999;
-  margin-top: 6rpx;
+.fav-toggle.on {
+  border-color: #ffd591;
+  background: #fff9f0;
+  color: #d48806;
 }
-.fav-btn.on .fav-star,
-.fav-btn.on .fav-text {
+.fav-toggle.on .fav-toggle-star {
   color: #ffb800;
 }
 
@@ -95,12 +99,15 @@
 }
 .btn-danger {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   color: #e53935;
   border-radius: 999rpx;
   font-size: 32rpx;
+  font-weight: 500;
   height: 88rpx;
-  line-height: 88rpx;
 }
 .btn-danger::after {
   border: none;

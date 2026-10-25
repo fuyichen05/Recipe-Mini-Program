@@ -36,14 +36,19 @@ page {
   font-size: 22rpx;
 }
 
-/* 通用按钮 */
+/* 通用按钮（内置小图标时自动居中对齐） */
 .btn-primary {
-  background: #EE5A24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff7a3c 0%, #ee5a24 100%);
   color: #fff;
   border-radius: 999rpx;
   font-size: 32rpx;
+  font-weight: 500;
+  letter-spacing: 2rpx;
   height: 88rpx;
-  line-height: 88rpx;
+  box-shadow: 0 10rpx 24rpx rgba(238, 90, 36, 0.25);
 }
 .btn-primary::after {
   border: none;
@@ -52,13 +57,22 @@ page {
   opacity: 0.6;
 }
 .btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   color: #666;
   border-radius: 999rpx;
   font-size: 32rpx;
+  font-weight: 500;
   height: 88rpx;
-  line-height: 88rpx;
 }
 .btn-ghost::after {
   border: none;
+}
+/* 按钮内小图标 */
+.btn-icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
 }

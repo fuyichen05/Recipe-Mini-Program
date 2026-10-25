@@ -38,7 +38,12 @@
     "tabSize": 2
   },
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "tools"
+      }
+    ],
     "include": []
   },
   "simulatorPluginLibVersion": {}

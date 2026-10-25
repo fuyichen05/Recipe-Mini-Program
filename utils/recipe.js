@@ -9,14 +9,17 @@
 const db = wx.cloud.database()
 const recipes = db.collection('recipes')
 
-// 预设分类（固定五个，勿改：历史数据按名称关联）
-const CATEGORIES = ['早餐', '正餐', '甜点', '汤', '其他']
+// 预设分类
+const CATEGORIES = ['早餐', '正餐', '甜点', '其他']
 
 const BATCH_SIZE = 100 // 云数据库客户端单次查询上限 100 条
 
-// 规范化记录：保证 isFavorite 是布尔值、note 是字符串
+// 规范化记录：保证 isFavorite 是布尔值、note 是字符串；
+// 「汤」分类已移除，历史数据里的「汤」（及其他未知分类）一律归入「其他」
 function normalize(record) {
+  const known = CATEGORIES.indexOf(record.category) >= 0
   return Object.assign({}, record, {
+    category: known ? record.category : '其他',
     isFavorite: !!record.isFavorite,
     note: record.note || ''
   })
