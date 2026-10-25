@@ -1,0 +1,9 @@
+{
+  "desc": "家庭菜谱记录小程序 sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

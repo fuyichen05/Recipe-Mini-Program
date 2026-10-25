@@ -1,0 +1,17 @@
+<!--pages/all/all 全部菜品-->
+<view class="page">
+  <view wx:if="{{!loading && list.length === 0}}" class="empty">
+    <text class="empty-icon">🍳</text>
+    <view class="empty-text">还没有记录，点击下方添加按钮开始吧</view>
+  </view>
+
+  <view wx:else class="grid">
+    <view class="grid-item" wx:for="{{list}}" wx:key="_id">
+      <recipe-card
+        recipe="{{item}}"
+        bind:open="onOpenCard"
+        bind:togglefav="onToggleFav"
+      />
+    </view>
+  </view>
+</view>

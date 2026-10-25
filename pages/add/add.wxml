@@ -1,0 +1,94 @@
+<!--pages/add/add 添加 / 编辑菜品-->
+<view class="page">
+  <view class="form">
+    <!-- 菜名 -->
+    <view class="section">
+      <view class="label">菜名 <text class="required">*</text></view>
+      <input
+        class="input"
+        placeholder="例如：红烧肉"
+        value="{{name}}"
+        bindinput="onNameInput"
+        maxlength="30"
+      />
+    </view>
+
+    <!-- 分类 -->
+    <view class="section">
+      <view class="label">分类 <text class="required">*</text></view>
+      <picker
+        mode="selector"
+        range="{{categories}}"
+        value="{{categoryIndex < 0 ? 0 : categoryIndex}}"
+        bindchange="onCategoryChange"
+      >
+        <view class="picker {{categoryIndex >= 0 ? '' : 'placeholder'}}">
+          {{categoryIndex >= 0 ? categories[categoryIndex] : '请选择分类'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 封面图 -->
+    <view class="section">
+      <view class="label">封面图 <text class="required">*</text></view>
+      <view
+        class="cover-preview"
+        wx:if="{{coverTempPath || coverFileID}}"
+        bind:tap="previewCover"
+      >
+        <image class="cover-img" src="{{coverTempPath || coverFileID}}" mode="aspectFill" />
+        <view class="cover-change" catch:tap="chooseCover">更换封面</view>
+      </view>
+      <view class="cover-empty" wx:else bind:tap="chooseCover">
+        <text class="cover-plus">＋</text>
+        <text class="cover-tip">拍照或从相册选择</text>
+      </view>
+    </view>
+
+    <!-- 配方 -->
+    <view class="section">
+      <view class="label">配方 <text class="required">*</text></view>
+      <textarea
+        class="textarea"
+        placeholder="记录比例和用量，例如：&#10;生抽:老抽:糖 = 2:1:1&#10;五花肉 500g、冰糖 30g"
+        value="{{recipeContent}}"
+        bindinput="onContentInput"
+        maxlength="1000"
+        auto-height
+      />
+    </view>
+
+    <!-- 备注 -->
+    <view class="section">
+      <view class="label">备注 / 心得（可选）</view>
+      <textarea
+        class="textarea"
+        placeholder="例如：小火慢炖 40 分钟更软糯"
+        value="{{note}}"
+        bindinput="onNoteInput"
+        maxlength="500"
+        auto-height
+      />
+    </view>
+
+    <!-- 收藏 -->
+    <view class="section row">
+      <view class="label no-margin">收藏这道菜</view>
+      <switch checked="{{isFavorite}}" bindchange="onFavChange" color="#EE5A24" />
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="footer">
+    <button wx:if="{{isEdit}}" class="btn-ghost cancel-btn" catch:tap="cancelEdit">
+      取消编辑
+    </button>
+    <button
+      class="btn-primary save-btn {{submitting ? 'disabled' : ''}}"
+      bind:tap="onSave"
+      disabled="{{submitting}}"
+    >
+      {{isEdit ? '保存修改' : '保存'}}
+    </button>
+  </view>
+</view>

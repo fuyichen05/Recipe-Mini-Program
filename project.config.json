@@ -1,0 +1,45 @@
+{
+  "compileType": "miniprogram",
+  "libVersion": "2.33.0",
+  "appid": "wxf3790218aca5e5b4",
+  "projectname": "family-recipes",
+  "description": "家庭菜谱记录：微信原生小程序 + 云开发（云数据库 + 云存储），家人共用一份数据",
+  "condition": {},
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "ignoreUploadUnusedFiles": true,
+    "urlCheck": true,
+    "coverView": true,
+    "autoAudits": false,
+    "compileHotReLoad": false,
+    "useIsolateContext": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "simulatorPluginLibVersion": {}
+}

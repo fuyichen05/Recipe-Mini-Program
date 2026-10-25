@@ -1,0 +1,109 @@
+/*pages/add/add 添加 / 编辑菜品*/
+.page {
+  padding: 24rpx 24rpx calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+.section.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+.label.no-margin {
+  margin-bottom: 0;
+  font-size: 28rpx;
+  color: #333;
+}
+.required {
+  color: #ee5a24;
+}
+
+.input {
+  font-size: 30rpx;
+}
+.picker {
+  font-size: 30rpx;
+}
+.picker.placeholder {
+  color: #bbbbbb;
+}
+.textarea {
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 1.6;
+  min-height: 160rpx;
+}
+
+/* 封面选择 */
+.cover-empty {
+  height: 280rpx;
+  border: 2rpx dashed #cccccc;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cover-plus {
+  font-size: 64rpx;
+  color: #cccccc;
+  line-height: 1;
+  margin-bottom: 12rpx;
+}
+.cover-tip {
+  font-size: 26rpx;
+  color: #999999;
+}
+.cover-preview {
+  position: relative;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.cover-img {
+  display: block;
+  width: 100%;
+  height: 360rpx;
+}
+.cover-change {
+  position: absolute;
+  right: 16rpx;
+  bottom: 16rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 999rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+/* 底部操作条 */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx calc(16rpx + env(safe-area-inset-bottom));
+  background: rgba(246, 246, 248, 0.96);
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+.cancel-btn {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+  padding-left: 36rpx;
+  padding-right: 36rpx;
+}
+.save-btn {
+  flex: 1;
+}

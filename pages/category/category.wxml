@@ -1,0 +1,35 @@
+<!--pages/category/category 分类页-->
+<view class="page">
+  <view class="layout">
+    <!-- 左侧分类列表 -->
+    <scroll-view class="side" scroll-y>
+      <view
+        wx:for="{{categories}}"
+        wx:key="name"
+        class="side-item {{activeIndex === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bind:tap="onSelectCategory"
+      >
+        <text>{{item.name}}</text>
+        <text class="side-count" wx:if="{{item.count > 0}}">{{item.count}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧当前分类的菜品 -->
+    <scroll-view class="main" scroll-y>
+      <view wx:if="{{!loading && currentList.length === 0}}" class="empty">
+        <text class="empty-icon">🍽️</text>
+        <view class="empty-text">「{{categories[activeIndex].name}}」分类下还没有菜品</view>
+      </view>
+      <view wx:else class="grid">
+        <view class="grid-item" wx:for="{{currentList}}" wx:key="_id">
+          <recipe-card
+            recipe="{{item}}"
+            bind:open="onOpenCard"
+            bind:togglefav="onToggleFav"
+          />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/all/all",
+    "pages/category/category",
+    "pages/add/add",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EE5A24",
+    "navigationBarTitleText": "家庭菜谱",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F6F8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#EE5A24",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/all/all",
+        "text": "全部"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "添加"
+      }
+    ]
+  },
+  "usingComponents": {
+    "recipe-card": "/components/recipe-card/index"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

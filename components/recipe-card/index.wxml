@@ -1,0 +1,18 @@
+<!--components/recipe-card 菜品卡片-->
+<view class="card">
+  <view class="cover-wrap" bind:tap="onOpen">
+    <image
+      class="cover"
+      src="{{recipe.coverImageFileID}}"
+      mode="aspectFill"
+      lazy-load="{{true}}"
+    />
+    <view class="fav-btn {{recipe.isFavorite ? 'on' : ''}}" catch:tap="onToggleFav">
+      <text class="fav-star">★</text>
+    </view>
+  </view>
+  <view class="info" bind:tap="onOpen">
+    <view class="name">{{recipe.name}}</view>
+    <text class="tag">{{recipe.category}}</text>
+  </view>
+</view>
