@@ -3,12 +3,23 @@
 //   open      —— 点击卡片主体，detail: { id }
 //   togglefav —— 点击收藏星标，detail: { id, next }
 Component({
+  properties: {
+    // 由列表页传入的菜品记录
+    recipe: {
+      type: Object,
+      value: {}
+    }
+  },
+
   methods: {
     onOpen() {
-      this.triggerEvent('open', { id: this.data.recipe._id })
+      const recipe = this.data.recipe
+      if (!recipe || !recipe._id) return
+      this.triggerEvent('open', { id: recipe._id })
     },
     onToggleFav() {
       const recipe = this.data.recipe
+      if (!recipe || !recipe._id) return
       this.triggerEvent('togglefav', {
         id: recipe._id,
         next: !recipe.isFavorite
