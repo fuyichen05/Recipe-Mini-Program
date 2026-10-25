@@ -1,15 +1,18 @@
 /*pages/all/all 全部菜品*/
+/* 列表网格：先横着排，每行两张，放满后换行竖排 */
 .grid {
   display: flex;
   flex-wrap: wrap;
   padding: 24rpx 24rpx 48rpx;
 }
+/* 每行两张：卡片固定 339rpx + 间距 24rpx，两卡三距共 750rpx，正好占满一屏宽 */
 .grid-item {
-  width: calc(50% - 12rpx);
+  width: 339rpx;
+  margin-right: 24rpx;
   margin-bottom: 24rpx;
 }
-.grid-item:nth-child(odd) {
-  margin-right: 24rpx;
+.grid-item:nth-child(even) {
+  margin-right: 0;
 }
 recipe-card {
   display: block;

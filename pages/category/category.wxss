@@ -55,17 +55,19 @@
   flex: 1;
   height: 100%;
 }
+/* 与「全部」页一致的网格：先横排，每行两张，再换行竖排 */
 .grid {
   display: flex;
   flex-wrap: wrap;
   padding: 24rpx 24rpx 48rpx;
 }
 .grid-item {
-  width: calc(50% - 12rpx);
+  width: 339rpx;
+  margin-right: 24rpx;
   margin-bottom: 24rpx;
 }
-.grid-item:nth-child(odd) {
-  margin-right: 24rpx;
+.grid-item:nth-child(even) {
+  margin-right: 0;
 }
 recipe-card {
   display: block;
