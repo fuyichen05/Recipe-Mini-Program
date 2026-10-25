@@ -58,9 +58,8 @@ Page({
 
   previewCover() {
     const recipe = this.data.recipe
-    if (recipe && recipe.coverImageFileID) {
-      wx.previewImage({ urls: [recipe.coverImageFileID] })
-    }
+    const src = recipe && (recipe.coverUrl || recipe.coverImageFileID)
+    if (src) wx.previewImage({ urls: [src] })
   },
 
   // 收藏/取消收藏：先改本地再写库，失败回滚

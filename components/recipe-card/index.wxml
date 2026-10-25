@@ -3,7 +3,7 @@
   <view class="cover-wrap" bind:tap="onOpen">
     <image
       class="cover"
-      src="{{recipe.coverImageFileID}}"
+      src="{{recipe.coverUrl || recipe.coverImageFileID}}"
       mode="aspectFill"
       lazy-load="{{true}}"
     />

@@ -3,7 +3,7 @@
   <!-- 大图封面（点击可全屏预览） -->
   <image
     class="hero"
-    src="{{recipe.coverImageFileID}}"
+    src="{{recipe.coverUrl || recipe.coverImageFileID}}"
     mode="aspectFill"
     bind:tap="previewCover"
   />

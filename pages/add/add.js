@@ -14,6 +14,7 @@ Page({
     categoryIndex: -1, // -1 表示还没选择分类
     coverTempPath: '', // 新选的本地图片（待上传）
     coverFileID: '', // 已在云存储的封面（编辑模式原有封面）
+    coverUrl: '', // 原封面的临时链接（仅编辑模式预览用）
     recipeContent: '',
     note: '',
     isFavorite: false,
@@ -33,6 +34,7 @@ Page({
         categoryIndex: Math.max(0, this.data.categories.indexOf(editing.category)),
         coverTempPath: '',
         coverFileID: editing.coverImageFileID,
+        coverUrl: editing.coverUrl || '',
         recipeContent: editing.recipeContent,
         note: editing.note || '',
         isFavorite: !!editing.isFavorite
@@ -73,7 +75,8 @@ Page({
   },
 
   previewCover() {
-    const src = this.data.coverTempPath || this.data.coverFileID
+    const src =
+      this.data.coverTempPath || this.data.coverUrl || this.data.coverFileID
     if (src) wx.previewImage({ urls: [src] })
   },
 
@@ -92,6 +95,7 @@ Page({
       categoryIndex: -1,
       coverTempPath: '',
       coverFileID: '',
+      coverUrl: '',
       recipeContent: '',
       note: '',
       isFavorite: false,

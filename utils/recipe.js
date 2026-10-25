@@ -33,6 +33,49 @@ function sortRecipes(list) {
   })
 }
 
+// 通过云函数批量获取云存储临时下载链接，给每条记录附上 coverUrl 字段。
+// 背景：免费环境云存储权限锁死为「仅创建者可读」，直接用 fileID 显示图片
+// 只有上传者本人能看到；云函数（管理员权限）生成的临时链接所有人都能加载。
+// 云函数未部署或调用失败时静默退回 fileID（上传者本人仍可看到自己的图）。
+async function attachCoverUrls(list) {
+  const seen = {}
+  const uniqueIds = []
+  list.forEach(function (r) {
+    if (r.coverImageFileID && !seen[r.coverImageFileID]) {
+      seen[r.coverImageFileID] = true
+      uniqueIds.push(r.coverImageFileID)
+    }
+  })
+  if (uniqueIds.length === 0) return list
+
+  const urlMap = {}
+  const CHUNK = 50 // 云函数单次最多处理 50 个文件
+  const tasks = []
+  for (let i = 0; i < uniqueIds.length; i += CHUNK) {
+    tasks.push(
+      wx.cloud
+        .callFunction({
+          name: 'getFileUrls',
+          data: { fileList: uniqueIds.slice(i, i + CHUNK) }
+        })
+        .then(function (res) {
+          const files = (res.result && res.result.fileList) || []
+          files.forEach(function (f) {
+            if (f.tempFileURL) urlMap[f.fileID] = f.tempFileURL
+          })
+        })
+        .catch(function (err) {
+          console.warn('获取封面临时链接失败（退回云文件ID显示）', err)
+        })
+    )
+  }
+  await Promise.all(tasks)
+  list.forEach(function (r) {
+    if (urlMap[r.coverImageFileID]) r.coverUrl = urlMap[r.coverImageFileID]
+  })
+  return list
+}
+
 // 拉取全部菜品（超过 100 条时自动分批），返回已排序的数组
 async function fetchAllRecipes() {
   const countRes = await recipes.count()
@@ -48,14 +91,21 @@ async function fetchAllRecipes() {
   const list = results.reduce(function (acc, res) {
     return acc.concat(res.data || [])
   }, [])
-  return sortRecipes(list.map(normalize))
+  const sorted = sortRecipes(list.map(normalize))
+  return attachCoverUrls(sorted)
 }
 
 // 按 id 查询单条详情
 function getRecipeById(id) {
-  return recipes.doc(id).get().then(function (res) {
-    return normalize(res.data)
-  })
+  return recipes
+    .doc(id)
+    .get()
+    .then(function (res) {
+      return attachCoverUrls([normalize(res.data)])
+    })
+    .then(function (arr) {
+      return arr[0]
+    })
 }
 
 // 新增菜品

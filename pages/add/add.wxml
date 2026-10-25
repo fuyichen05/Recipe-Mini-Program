@@ -37,7 +37,7 @@
         wx:if="{{coverTempPath || coverFileID}}"
         bind:tap="previewCover"
       >
-        <image class="cover-img" src="{{coverTempPath || coverFileID}}" mode="aspectFill" />
+        <image class="cover-img" src="{{coverTempPath || coverUrl || coverFileID}}" mode="aspectFill" />
         <view class="cover-change" catch:tap="chooseCover">
           <image class="cover-change-icon" src="/images/icons/camera-white.png" />更换封面
         </view>
